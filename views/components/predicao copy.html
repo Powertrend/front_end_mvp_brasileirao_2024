@@ -1,0 +1,66 @@
+<div
+    class="flex flex-col items-center justify-center h-screen w-screen bg-gradient-to-b from-green-500 to-green-800 overflow-hidden m-0 p-0">
+
+
+
+    <form method="POST" action="/predicao" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+        <h1 class="text-2xl font-semibold mb-4 text-center">Previsão de Jogo</h1>
+
+        <div class="mb-4">
+            <label for="mandante" class="block text-gray-700 text-sm font-bold mb-2">Time Mandante:</label>
+            <input type="text" name="mandante" placeholder="Time Mandante" required
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-4">
+            <label for="visitante" class="block text-gray-700 text-sm font-bold mb-2">Time Visitante:</label>
+            <input type="text" name="visitante" placeholder="Time Visitante" required
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-4">
+            <label for="posMandante" class="block text-gray-700 text-sm font-bold mb-2">Posição Mandante:</label>
+            <input type="number" name="posMandante" placeholder="Posição Mandante" required
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-4">
+            <label for="posVisitante" class="block text-gray-700 text-sm font-bold mb-2">Posição Visitante:</label>
+            <input type="number" name="posVisitante" placeholder="Posição Visitante" required
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="flex items-center justify-between">
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Prever
+                Jogo</button>
+        </div>
+    </form>
+
+    {% if resultado %}
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md mt-6">
+        <h2 class="text-xl font-semibold mb-2">Resultado da Previsão:</h2>
+        <p class="text-gray-700">
+            O resultado para {{ request.form.mandante }} x {{ request.form.visitante }} é:
+            {% if resultado == 'Vitoria_Mandante' %}
+            'Vitória do Time da Casa'
+            {% elif resultado == 'Vitoria_Visitante' %}
+            'Vitória do Visitante'
+            {% elif resultado == 'Empate' %}
+            'Empate'
+            {% else %}
+            'Resultado desconhecido'
+            {% endif %}
+        </p>
+
+        <div class="text-center mt-4"></div>
+        <a href="{{ url_for('index') }}"
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
+            Voltar
+        </a>
+    </div>
+</div>
+{% else %}
+<p class="text-gray-700 mt-4">Nenhum resultado disponível.</p>
+{% endif %}
+</div>

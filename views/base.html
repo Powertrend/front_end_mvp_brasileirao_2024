@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Previsão Brasileirão 2024</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+</head>
+
+<body class="bg-body flex h-screen w-screen overflow-hidden" style="background-image: url();">
+
+    <!-- Header e Main Content -->
+    <div class="flex-1 h-screen w-screen flex flex-col overflow-hidden">
+        <!-- Main Content -->
+        <main class="flex-1 h-screen w-screen bg-gray-100 overflow-hidden">
+            {% block index %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+
+</html>

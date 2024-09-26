@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center z-50">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-4/5 max-w-6xl h-3/4 overflow-y-auto">
+        <button id="closeModalBtn" class="text-gray-600 hover:text-gray-900 float-right text-2xl">&times;</button>
+        <h2 class="text-2xl font-bold mb-4 text-center">Tabela de Classificação</h2>
+
+        <!-- Tabela de Classificação -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 text-left">
+                        <th class="py-3 px-4 border-b text-center">Posição</th>
+                        <th class="py-3 px-4 border-b text-center">Escudo</th>
+                        <th class="py-3 px-4 border-b text-center">Time</th>
+                        <th class="py-3 px-4 border-b text-center">Pontos</th>
+                        <th class="py-3 px-4 border-b text-center">Jogos</th>
+                        <th class="py-3 px-4 border-b text-center">Vitórias</th>
+                        <th class="py-3 px-4 border-b text-center">Empates</th>
+                        <th class="py-3 px-4 border-b text-center">Derrotas</th>
+                        <th class="py-3 px-4 border-b text-center">GP</th>
+                        <th class="py-3 px-4 border-b text-center">GC</th>
+                        <th class="py-3 px-4 border-b text-center">SG</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for time in classificacao %}
+                    <tr class="hover:bg-gray-100">
+                        <td
+                            class="py-3 px-4 border-b text-center 
+                            {% if time.Posicao <= 4 %}bg-green-500{% elif 5 <= time.Posicao <= 8 %}bg-blue-500{% elif 17 <= time.Posicao <= 20 %}bg-red-500{% endif %}">
+                            {{ time.Posicao }}
+                        </td>
+                        <td class="py-3 px-4 border-b text-center flex items-center justify-center">
+                            <img src="{{ url_for('static', filename='images/clubes/' + time.Escudo) }}"
+                                alt="{{ time.Time }} Escudo" class="w-12 h-12 mr-2">
+                        </td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.Time }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.Pontos }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.Jogos }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.Vitorias }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.Empates }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.Derrotas }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.GP }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.GC }}</td>
+                        <td class="py-3 px-4 border-b text-center">{{ time.SG }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
+                Fechar Tabela
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função JS para fechar o modal
+    document.getElementById('closeModalBtn').addEventListener('click', function () {
+        document.getElementById('modal').classList.add('hidden');
+    });
+</script>

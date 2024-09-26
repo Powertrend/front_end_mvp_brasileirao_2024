@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block index %}
+{% if request.path == "/" %}
+{% include 'components/welcome.html' %}
+{% elif request.path == "/tabela" %}
+{% include 'components/welcome.html' %}
+{% elif request.path == "/predicao" %}
+{% include 'components/predicao.html' %}
+{% endif %}
+{% endblock %}
