@@ -6,7 +6,7 @@
 
 O Predict é uma aplicação frontend para predizer partidas futuras de Jogos do Brasileirão 2024, ela trás uma forma gráfica e simples para usar o modelo treinado que está em um backend.
 
-O front-end da aplicação pode ser encontrado no seguinte repositório: [https://github.com/AlanAmaralCosta/lbfb-front-end](https://github.com/AlanAmaralCosta/lbfb-front-end)
+O back-end da aplicação pode ser encontrado no seguinte repositório: [https://github.com/Powertrend/mvp_brasileirao_2024](https://github.com/Powertrend/mvp_brasileirao_2024)
 
 ## Funcionalidades 🤖
 
